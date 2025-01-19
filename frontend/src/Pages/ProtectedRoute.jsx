@@ -15,9 +15,11 @@ const ProtectedRoute = ({ children }) => {
   if (!user) {
     return <Navigate to="/login" />;
   }
+  else{
+    setUser(user);
+  }
 
 
-  setUser(user);
 
   return (
     <>
