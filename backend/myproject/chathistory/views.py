@@ -6,7 +6,27 @@ from .models import ChatModel
 # Create your views here.
 @api_view(['POST'])
 def createChat(request):
-    return Response({"message": "Chat created successfully"}, status=status.HTTP_201_CREATED)
+    data = request.data
+    userID = data.get('user_id')
+    originalText = data.get('original_text')
+    processedText = data.get('processed_text')
+
+    if not all([userID, originalText, processedText]):
+        return Response(
+            {"error": "All fields (userid, originaltext, processedtext) are required."},
+            status=status.HTTP_400_BAD_REQUEST
+        )
+    try:
+        chat_entry = ChatModel.objects.create(user_id=userID, original_text=originalText, processed_text=processedText)
+        return Response(
+            {"message": "Data saved successfully.", "id": chat_entry.user_id},
+            status=status.HTTP_201_CREATED
+        )
+    except Exception as e:
+        return Response(
+            {"error": str(e)},
+            status=status.HTTP_500_INTERNAL_SERVER_ERROR
+        )
 
 @api_view(['GET'])
 def getChat(request, user_id):
