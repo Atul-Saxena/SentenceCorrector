@@ -30,7 +30,35 @@ def createChat(request):
 
 @api_view(['GET'])
 def getChat(request, user_id):
-    print(user_id)
-    chats = ChatModel.objects.filter(user_id=user_id)
-    print(chats)
-    return Response({"message": "Chat retrieved successfully"}, status=status.HTTP_200_OK)
+    
+    try:
+        # Query the database for chats matching the userid
+        chats = ChatModel.objects.filter(user_id=user_id)
+
+        if not chats.exists():
+            return Response(
+                {"message": "No chats found for the given userid."},
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        # Serialize the data
+        chat_data = [
+            {
+                "id": chat.id,
+                "userid": chat.user_id,
+                "originaltext": chat.original_text,
+                "processedtext": chat.processed_text
+            }
+            for chat in chats
+        ]
+
+        return Response(
+            {"message": "Chats retrieved successfully.", "data": chat_data},
+            status=status.HTTP_200_OK
+        )
+
+    except Exception as e:
+        return Response(
+            {"error": str(e)},
+            status=status.HTTP_500_INTERNAL_SERVER_ERROR
+        )
