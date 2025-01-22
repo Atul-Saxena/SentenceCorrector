@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useChatContext } from "../context/ChatContext.jsx";
+import { useFirebaseContext } from "../context/FirebaseContext.jsx";
 import axios from "axios";
 
 const InputComponent = () => {
@@ -7,6 +8,7 @@ const InputComponent = () => {
     const [loading, setLoading] = useState(false);
 
     const { setChatOutput } = useChatContext();
+    const { user } = useFirebaseContext();
 
     const handleSubmit = async(event) => {
         event.preventDefault();
@@ -15,6 +17,17 @@ const InputComponent = () => {
           const output = await axios.post("http://127.0.0.1:8000/api/process-text/", { text });
           setChatOutput(output.data);
           console.log("data sent successfully");
+          const chat_data = {
+            user_id: user.uid,
+            original_text: output.data.original_text,
+            processed_text: output.data.processed_text,
+          };
+          // console.log(chat_data);
+
+          const createText = await axios.post("http://127.0.0.1:8000/api/chat/createchat/", chat_data);
+          console.log(createText.data);
+          
+          
           
           setLoading(false);
           

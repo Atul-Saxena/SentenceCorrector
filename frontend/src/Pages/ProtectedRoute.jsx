@@ -8,6 +8,12 @@ const ProtectedRoute = ({ children }) => {
   const [user, loading] = useAuthState(auth);
   const { setUser } = useFirebaseContext();
 
+  useEffect(() => {
+    if (user) {
+      setUser(user); // Update user context after rendering
+    }
+  }, [user, setUser]);
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -15,11 +21,6 @@ const ProtectedRoute = ({ children }) => {
   if (!user) {
     return <Navigate to="/login" />;
   }
-  else{
-    setUser(user);
-  }
-
-
 
   return (
     <>
