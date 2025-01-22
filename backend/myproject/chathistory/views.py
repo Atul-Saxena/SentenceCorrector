@@ -37,7 +37,7 @@ def getChat(request, user_id):
 
         if not chats.exists():
             return Response(
-                {"message": "No chats found for the given userid."},
+                {"message": "No chats found for the given userid.","data":[]},
                 status=status.HTTP_404_NOT_FOUND
             )
 
