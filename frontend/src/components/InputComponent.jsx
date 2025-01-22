@@ -13,6 +13,10 @@ const InputComponent = () => {
     const handleSubmit = async(event) => {
         event.preventDefault();
         setLoading(true);
+        if(text === ""){
+          setLoading(false);
+          return;
+        };
         try {
           const output = await axios.post("http://127.0.0.1:8000/api/process-text/", { text });
           setChatOutput(output.data);
@@ -40,9 +44,9 @@ const InputComponent = () => {
     return (
           <form
             onSubmit={handleSubmit}
-            className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md"
+            className="bg-white bg-opacity-15 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] p-6 rounded-lg w-full"
           >
-            <label htmlFor="message" className="block text-lg font-medium mb-2">
+            <label htmlFor="message" className="block text-white text-lg font-medium mb-2">
               Your Text
             </label>
             <textarea
@@ -50,11 +54,11 @@ const InputComponent = () => {
               value={text}
               onChange={(e) => setText(e.target.value)}
               placeholder="Write your text here..."
-              className="w-full h-32 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full h-32 px-4 py-2 bg-transparent text-white focus:outline-none"
             ></textarea>
             <button
               type="submit"
-              className="w-full mt-4 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+              className="w-full mt-4 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors focus:outline-none"
             >
               Submit
             </button>

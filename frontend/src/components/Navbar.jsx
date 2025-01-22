@@ -14,7 +14,7 @@ const Navbar = () => {
 
 
     return (
-        <nav className="sticky top-0 bg-gray-800 text-white p-2 shadow-md">
+        <nav className="fixed w-full p-4 top-0 bg-transparent text-white shadow-md">
             <div className="container mx-auto flex justify-between items-center">
                 <h1 className="text-base font-bold">Sentence Corrector</h1>
                 <button
