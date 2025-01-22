@@ -69,22 +69,12 @@ A web application that takes input text and provides grammatically corrected out
    python manage.py runserver
    ```
 
-### Connecting Frontend and Backend
-
-1. Update the frontend configuration file (e.g., `.env` or a constants file) to point to the backend API URL:
-   ```env
-   VITE_API_BASE_URL=http://127.0.0.1:8000/api/
-   ```
-
-2. Ensure both the frontend and backend servers are running.
-
----
-
 ## Usage
 
 1. Open the frontend application in your browser (default: `http://localhost:5173`).
-2. Enter a text into the input field and submit it.
-3. View the grammatically corrected text in the output area.
+2. Create an account if not created and then login.
+3. Enter a text into the input field and submit it.
+4. View the grammatically corrected text in the output area.
 
 ---
 
@@ -104,18 +94,17 @@ A web application that takes input text and provides grammatically corrected out
 
 ## Example API Request
 
-**Endpoint**: `POST /api/correct/`
-
 **Request Body**:
 ```json
 {
-  "text": "I is a developer."
+  "text": "heys i is here comings to your"
 }
 
 **Response Body**:
 ```json
 {
-  "corrected_text": "I am a developer."
+    "original_text": "heys i is here comings to your",
+    "processed_text": "Hey, I am here coming to your house."
 }
 ```
 
@@ -151,12 +140,6 @@ A web application that takes input text and provides grammatically corrected out
    git push origin feature-name
    ```
 5. Submit a pull request.
-
----
-
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for details.
 
 ---
 
