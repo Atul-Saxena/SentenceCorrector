@@ -6,8 +6,9 @@ export const useChatContext = () => useContext(chatContext);
 
 const ChatContext = (props) => {
   const [currentChat, setChatOutput] = useState({});
+  const [loading, setLoading] = useState(false);
 
-  return <chatContext.Provider value={{ currentChat, setChatOutput }}>
+  return <chatContext.Provider value={{ currentChat, setChatOutput,loading,setLoading }}>
         {props.children}
     </chatContext.Provider>
 }

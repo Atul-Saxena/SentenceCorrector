@@ -5,9 +5,9 @@ import axios from "axios";
 
 const InputComponent = () => {
     const [text, setText] = useState("");
-    const [loading, setLoading] = useState(false);
+    // const [loading, setLoading] = useState(false);
 
-    const { setChatOutput } = useChatContext();
+    const { setChatOutput,setLoading } = useChatContext();
     const { user } = useFirebaseContext();
 
     const handleSubmit = async(event) => {
@@ -58,7 +58,6 @@ const InputComponent = () => {
             >
               Submit
             </button>
-            <p>{loading ? "Processing..." : ""}</p>
           </form>
       );
 }
