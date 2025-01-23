@@ -21,7 +21,7 @@ const OutputComponent = () => {
   }
 
   return (
-    <div className="bg-gray-100 bg-opacity-15 p-4 rounded-lg shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] max-w-md mx-auto mt-8">
+    <div className="bg-black bg-opacity-15 p-4 shadow-[10px_9px_24px_-14px_rgba(59,_130,_246,_0.5)]  max-w-md mx-auto mt-8">
 
       {currentChat.original_text ?
 

@@ -43,7 +43,7 @@ const HistoryPage = () => {
       {history.length > 0 ? history.map((chat) => (
         <div
           key={chat.id}
-          className="p-4 mx-10 w-full md:w-1/2 border rounded-lg bg-gray-100 bg-opacity-5 hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] transition-shadow duration-500 ease-in-out"
+          className="p-4 mx-10 w-full md:w-1/2 border rounded-lg bg-gray-100 bg-opacity-5 hover:shadow-[0px_9px_22px_0px_rgba(59,_130,_246,_0.5)] transition-shadow duration-500 ease-in-out"
         >
           <p className="text-white font-semibold">Original Text: {chat.originaltext}</p>
           <p className="text-white font-extrabold mt-2"> Corrected Text: {chat.processedtext}</p>

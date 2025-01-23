@@ -44,7 +44,7 @@ const InputComponent = () => {
     return (
           <form
             onSubmit={handleSubmit}
-            className="bg-white bg-opacity-15 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] p-6 rounded-lg w-full"
+            className="bg-black bg-opacity-15 shadow-[10px_9px_24px_-14px_rgba(59,_130,_246,_0.5)] p-6 w-full"
           >
             <label htmlFor="message" className="block text-white text-lg font-medium mb-2">
               Your Text
