@@ -26,7 +26,7 @@ const InputComponent = () => {
             original_text: output.data.original_text,
             processed_text: output.data.processed_text,
           };
-          // console.log(chat_data);
+          console.log(chat_data);
 
           const createText = await axios.post("http://127.0.0.1:8000/api/chat/createchat/", chat_data);
           console.log(createText.data);
@@ -37,6 +37,8 @@ const InputComponent = () => {
           
         } catch (error) {
           console.log(error);
+          setChatOutput({});
+          setLoading(false);
           
         }
         setText(""); // Clear the textarea after submission
