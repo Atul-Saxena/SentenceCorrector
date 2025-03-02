@@ -54,7 +54,7 @@ A web application that takes input text and provides grammatically corrected out
    source venv/Scripts/activate # On Windows: venv\Scripts\activate
    ```
 
-3. Install dependencies:
+3. Install dependencies(only work with python 3.11.4 or previous versions):
    ```bash
    pip install -r requirements.txt
    ```
